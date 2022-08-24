@@ -1,0 +1,7 @@
+{
+  "name": "@theatre_bills/server",
+  "private": true,
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
