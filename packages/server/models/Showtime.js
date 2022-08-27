@@ -1,6 +1,10 @@
 import mongoose from 'mongoose';
 
 const ShowtimeSchema = new mongoose.Schema({
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: 'users',
+  },
   title: {
     type: String,
     required: true,
