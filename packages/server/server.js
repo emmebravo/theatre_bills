@@ -4,13 +4,18 @@ import cors from 'cors';
 import connectDB from './config/database.js';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
+import passport from 'passport';
+import passportConfig from './config/passport.js';
 import main from './routes/api/main.js';
+import users from './routes/users.js';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 //connect DB
 connectDB();
+
+passportConfig(passport);
 
 //middleware
 app.use(express.json());
@@ -35,7 +40,8 @@ app.use(
 app.get('/', (request, response) => {
   response.send('API working');
 });
-app.use('/api/main', main);
+app.use('/users', users);
+app.use('/api', main);
 
 app.listen(PORT, () => {
   console.log(`local host @ ${PORT}`);
