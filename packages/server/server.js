@@ -20,10 +20,7 @@ passportConfig(passport);
 //middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(passport.initialize());
-app.use(passport.session());
 app.use(cors());
-
 //session
 app.use(
   session({
@@ -35,6 +32,8 @@ app.use(
     }),
   })
 );
+app.use(passport.initialize());
+app.use(passport.session());
 
 //routes
 app.get('/', (request, response) => {
