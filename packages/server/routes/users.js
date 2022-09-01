@@ -8,7 +8,7 @@ const router = express.Router();
 router.post('/register', auth.register);
 
 // @route POST api/users/login
-// @desc Login user and return jwt token
+// @desc Login user
 // @access Public
 router.post('/login', auth.login);
 
