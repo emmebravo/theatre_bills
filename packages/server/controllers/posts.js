@@ -2,10 +2,9 @@ import 'dotenv/config';
 import Showtime from '../models/Showtime.js';
 import cloudinary from '../middleware/cloudinary.js';
 
-const createPost = async (request, response) => {
+const createShow = async (request, response) => {
   try {
     const result = await cloudinary.uploader.upload(request.file.path);
-
     const show = await Showtime.create({
       userId: request.user.id,
       title: request.body.title,
@@ -18,6 +17,7 @@ const createPost = async (request, response) => {
       image: result.secure_url,
       cloudinaryId: result.public_id,
     });
+
     console.log('Show has been added');
     response.json({ message: 'Post Created!', show });
   } catch (error) {
@@ -25,7 +25,7 @@ const createPost = async (request, response) => {
   }
 };
 
-const deletePost = async (request, response) => {
+const deleteShow = async (request, response) => {
   try {
     const show = await Showtime.findById(request.params.id);
     if (request.user.id !== show.userId) {
@@ -36,6 +36,7 @@ const deletePost = async (request, response) => {
       });
 
       await cloudinary.uploader.destroy(show.cloudinaryId);
+
       console.log('Show has been deleted');
       response.json({ message: 'Post has been deleted!' });
     }
@@ -44,4 +45,4 @@ const deletePost = async (request, response) => {
   }
 };
 
-export { createPost, updatePost, deletePost };
+export { createShow, deleteShow };
