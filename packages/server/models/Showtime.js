@@ -33,6 +33,14 @@ const ShowtimeSchema = new mongoose.Schema({
     type: Date,
     require: false,
   },
+  image: {
+    type: String,
+    require: true,
+  },
+  cloudinaryId: {
+    type: String,
+    require: true,
+  },
 });
 
 const Showtime = mongoose.model('showtime', ShowtimeSchema);
