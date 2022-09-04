@@ -6,12 +6,4 @@ const ensureAuth = (request, response, next) => {
   }
 };
 
-const ensureGuest = (request, response, next) => {
-  if (!request.isAuthenticated()) {
-    return next();
-  } else {
-    response.redirect('/');
-  }
-};
-
-export { ensureAuth, ensureGuest };
+export { ensureAuth };
