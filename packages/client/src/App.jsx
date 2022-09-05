@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom';
-import './App.css';
 import Hero from './components/Hero';
 import Login from './components/Login';
 import Register from './components/Register';
