@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt';
 
 const login = (request, response, next) => {
   passport.authenticate('local', {
-    successRedirect: '/gets/feed',
+    successRedirect: 'api/gets/feed',
     failureRedirect: '/users/login',
     failureFlash: true,
   })(request, response, next);
