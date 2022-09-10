@@ -43,5 +43,5 @@ app.use('/users', users);
 app.use('/api', main);
 
 app.listen(PORT, () => {
-  console.log(`local host @ ${PORT}`);
+  console.log(`localhost @ ${PORT}`);
 });

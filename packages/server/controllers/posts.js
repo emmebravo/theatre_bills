@@ -4,16 +4,17 @@ import cloudinary from '../middleware/cloudinary.js';
 
 const createShow = async (request, response) => {
   try {
+    console.log(request.body);
+    const { title, playwright, theatre_name, show_date, city } = request.body;
+
     const result = await cloudinary.uploader.upload(request.file.path);
     const show = await Showtime.create({
       userId: request.user.id,
-      title: request.body.title,
-      playwright: request.body.playwright,
-      show_type: request.body.show_type,
-      city: request.body.city,
-      country: request.body.country,
-      theatre_name: request.body.theatre_name,
-      show_date: request.body.show_date,
+      title: title,
+      theatre_name: theatre_name,
+      playwright: playwright,
+      show_date: show_date,
+      city: city,
       image: result.secure_url,
       cloudinaryId: result.public_id,
     });

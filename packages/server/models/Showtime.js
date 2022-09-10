@@ -9,25 +9,17 @@ const ShowtimeSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  playwright: {
+  theatre_name: {
     type: String,
     required: true,
   },
-  show_type: {
+  playwright: {
     type: String,
     required: false,
   },
   city: {
     type: String,
-    required: true,
-  },
-  country: {
-    type: String,
     required: false,
-  },
-  theatre_name: {
-    type: String,
-    required: true,
   },
   show_date: {
     type: Date,
