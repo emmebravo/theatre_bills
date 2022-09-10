@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom';
+import Masks from '../assets/masks.svg';
 
 const Navigation = () => {
   return (
     <nav className='relative container mx-auto p-6'>
       <div className='flex items-center justify-between'>
-        <div className='pt-2'>logo goes here</div>
+        <div className='pt-2'>
+          <img src={Masks} className='h-12' />
+        </div>
         <div className='hidden md:flex space-x-6'>
           <Link to='/login'>Login</Link>
           <Link to='/register'>Register</Link>
