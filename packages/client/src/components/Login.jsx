@@ -25,7 +25,7 @@ const Login = () => {
     event.preventDefault();
     axios
       .post(`${import.meta.env.VITE_REACT_APP_BACKEND}/users/login`, login)
-      .then((response) => console.log(response))
+      .then((response) => console.log(response.data))
       .catch((error) => {
         console.error(error);
       });
