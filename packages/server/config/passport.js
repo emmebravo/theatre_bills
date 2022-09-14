@@ -20,7 +20,6 @@ export default function (passport) {
           // match password
           bcrypt.compare(password, user.password, (error, isMatch) => {
             if (error) throw error;
-
             if (isMatch) {
               return done(null, user);
             } else {

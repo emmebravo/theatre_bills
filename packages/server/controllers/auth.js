@@ -4,10 +4,15 @@ import passport from 'passport';
 import bcrypt from 'bcrypt';
 
 const login = (request, response, next) => {
-  passport.authenticate('local', {
-    successRedirect: 'api/gets/feed',
-    failureRedirect: '/users/login',
-    failureFlash: true,
+  passport.authenticate('local', (error, user, info) => {
+    if (error) throw error;
+    if (!user) response.send('No user exists');
+    else {
+      request.logIn(user, (error) => {
+        if (error) throw error;
+        response.send({ data: request.user });
+      });
+    }
   })(request, response, next);
 };
 
