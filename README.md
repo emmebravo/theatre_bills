@@ -1,6 +1,8 @@
 # Theatre Bills
 
-Keep track of your Playbills all in one app. Keep track of where you saw the show; who you went with; and any tiny thing which made your night magical.
+Digitize your Playbills! 
+
+Maybe you're like me: I love my playbills, but unless they're autographed, I honestly don't want to keep them around gathering dust lol Theatre Bills comes in. Take a pic of your Playbill cover, and add details like theatre's name, title, and playwright. As the app grows, you'll be able to see a map with pins of the shows you've been to! 
 
 ## Tech Stack
 
