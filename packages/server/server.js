@@ -14,7 +14,6 @@ const PORT = process.env.PORT || 5000;
 
 //connect DB
 connectDB();
-
 passportConfig(passport);
 
 //middleware
