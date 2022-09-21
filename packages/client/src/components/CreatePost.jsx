@@ -47,7 +47,6 @@ const CreatePost = () => {
     event.preventDefault();
     if (!upload) return;
     uploadShowData(upload);
-    console.log(upload);
   };
 
   const uploadShowData = (upload) => {
@@ -60,10 +59,10 @@ const CreatePost = () => {
     formData.append('image', upload);
 
     axios
-      .post(`api/posts/create-show`, formData)
+      .post(`api/posts/create-show`, formData, { withCredentials: true })
       .then((response) => console.log(response))
       .catch((error) => {
-        console.error(error);
+        console.error(error.response.data);
       });
   };
 
