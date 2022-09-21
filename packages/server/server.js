@@ -19,7 +19,13 @@ passportConfig(passport);
 //middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors());
+app.use(
+  cors({
+    origin: 'http://localhost:5173', // allows server to accept requests from this origin
+    methods: 'GET, POST, PUT, DELETE',
+    credentials: true, // allow cookie session from browser to pass through to server
+  })
+);
 //session
 app.use(
   session({
