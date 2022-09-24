@@ -24,7 +24,9 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post(`${import.meta.env.VITE_REACT_APP_BACKEND}/users/login`, login)
+      .post(`${import.meta.env.VITE_REACT_APP_BACKEND}/users/login`, login, {
+        withCredentials: true,
+      })
       .then((response) => console.log(response.data))
       .catch((error) => {
         console.error(error);
