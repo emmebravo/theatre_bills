@@ -12,3 +12,4 @@ Maybe you're like me: I love my playbills, but unless they're autographed, I hon
 - Cloudinary for image hosting
 - Google Map React for a map of your shows
 - Tailwind for Styling
+- Image for Logo [https://www.svgrepo.com/svg/155111/masks]
