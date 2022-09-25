@@ -33,6 +33,7 @@ const ShowtimeSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
+  created: Date.now(),
 });
 
 const Showtime = mongoose.model('showtime', ShowtimeSchema);
