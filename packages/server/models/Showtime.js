@@ -34,7 +34,7 @@ const ShowtimeSchema = new mongoose.Schema({
     require: true,
   },
   created: {
-    type: date,
+    type: Date,
     default: Date.now(),
   },
 });
