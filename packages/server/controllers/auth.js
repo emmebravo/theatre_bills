@@ -10,7 +10,7 @@ const login = (request, response, next) => {
     else {
       request.logIn(user, (error) => {
         if (error) throw error;
-        response.send({ data: request.user });
+        response.send('Successfully Authenticated');
       });
     }
   })(request, response, next);
