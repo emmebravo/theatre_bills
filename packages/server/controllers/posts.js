@@ -4,23 +4,24 @@ import cloudinary from '../middleware/cloudinary.js';
 
 const createShow = async (request, response) => {
   try {
-    console.log(request.body);
     const { title, playwright, theatre_name, show_date, city } = request.body;
 
-    const result = await cloudinary.uploader.upload(request.file.path);
-    const show = await Showtime.create({
+    const result = await cloudinary.uploader.upload(request.file.path, {
+      folder: 'theatrebills',
+    });
+
+    await Showtime.create({
       userId: request.user.id,
-      title: title,
-      theatre_name: theatre_name,
-      playwright: playwright,
-      show_date: show_date,
-      city: city,
+      title,
+      theatre_name,
+      playwright,
+      show_date,
+      city,
       image: result.secure_url,
       cloudinaryId: result.public_id,
     });
 
-    console.log('Show has been added');
-    response.json({ message: 'Post Created!', show });
+    response.json({ message: 'Post Created!' });
   } catch (error) {
     response.status(500).json({ message: error.message });
   }
@@ -30,7 +31,7 @@ const deleteShow = async (request, response) => {
   try {
     const show = await Showtime.findById(request.params.id);
     if (request.user.id !== show.userId) {
-      response.redirect('/feed');
+      response.status(500).json({ message: 'Unauthorize to delete post' });
     } else {
       await Showtime.deleteOne({
         _id: request.params.id,
