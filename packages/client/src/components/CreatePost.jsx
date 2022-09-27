@@ -10,7 +10,9 @@ const CreatePost = () => {
     city: '',
   });
   const [upload, setUpload] = useState();
-  const [previewImg, setPreviewImg] = useState('');
+  const [previewImg, setPreviewImg] = useState(
+    `https://via.placeholder.com/400x566.png?text=Playbill+Placeholder`
+  );
 
   const [errors, setErrors] = useState({
     title: '',
@@ -107,7 +109,15 @@ const CreatePost = () => {
   // };
 
   return (
-    <div className='container flex flex-col items-center px-6 mx-auto mt-10 md:flex-row'>
+    <div className='container flex flex-col-reverse items-center px-6 mx-auto mt-10 md:flex-row'>
+      <div className='flex flex-col sm:mx-auto sm:w-full sm:max-w-md md:w-1/2 md:px-6'>
+        <h2 className='mt-6 text-center text-3xl font-extrabold tracking-wider md:text-4xl'>
+          Preview
+        </h2>
+        {previewImg && (
+          <img src={previewImg} alt='chosen image' className='h-auto' />
+        )}
+      </div>
       <div className='flex flex-col sm:mx-auto sm:w-full sm:max-w-md md:w-1/2 md:px-6'>
         <h2 className='mt-6 text-center text-3xl font-extrabold tracking-wider md:text-4xl'>
           Create Show Post
@@ -256,14 +266,7 @@ const CreatePost = () => {
           </form>
         </div>
       </div>
-      <div className='md:w-1/2'>
-        <h2 className='mt-6 text-center text-3xl font-extrabold tracking-wider md:text-4xl'>
-          Preview
-        </h2>
-        {previewImg && (
-          <img src={previewImg} alt='chosen image' className='h-auto' />
-        )}
-      </div>
+
       {/* </div> */}
     </div>
   );
