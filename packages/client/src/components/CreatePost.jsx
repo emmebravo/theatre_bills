@@ -62,7 +62,7 @@ const CreatePost = () => {
 
     axios
       .post(`api/posts/create-show`, formData, { withCredentials: true })
-      .then((response) => console.log(response))
+      .then((response) => console.log(response.data))
       .catch((error) => {
         console.error(error.response.data);
       });

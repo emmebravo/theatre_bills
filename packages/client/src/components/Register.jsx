@@ -81,7 +81,7 @@ const Register = () => {
   };
 
   return (
-    <div className='container flex flex-col items-center px-6 mx-auto mt-10'>
+    <div className='container flex flex-col items-center px-6'>
       <div className='sm:mx-auto sm:w-full sm:max-w-md'>
         <h2 className='mt-6 text-center text-3xl font-extrabold tracking-wider md:text-4xl'>
           Register
