@@ -16,10 +16,6 @@ const CreatePost = () => {
 
   const [errors, setErrors] = useState({
     title: '',
-    playwright: '',
-    theatre_name: '',
-    show_date: '',
-    city: '',
   });
 
   const handleShow = (event) => {
@@ -28,7 +24,7 @@ const CreatePost = () => {
       ...show,
       [name]: value,
     });
-    // handleValidate(event);
+    handleValidate(event);
   };
 
   const handleUpload = (event) => {
@@ -68,45 +64,23 @@ const CreatePost = () => {
       });
   };
 
-  // const handleValidate = (event) => {
-  //   const { name, value } = event.target;
-  //   setErrors((prev) => {
-  //     const inputObj = { ...prev, [name]: '' };
+  const handleValidate = (event) => {
+    const { name, value } = event.target;
+    setErrors((prev) => {
+      const inputObj = { ...prev, [name]: '' };
 
-  //     switch (name) {
-  //       case 'name':
-  //         if (!value) {
-  //           inputObj[name] = 'Please enter a name';
-  //         }
-  //         break;
-  //       case 'email':
-  //         if (!value) {
-  //           inputObj[name] = 'Please enter an email';
-  //         }
-  //         break;
-  //       case 'password':
-  //         if (!value) {
-  //           inputObj[name] = 'Please enter a password';
-  //         } else if (register.password2 && value !== register.password2) {
-  //           inputObj['password2'] = 'Passwords do not match';
-  //         } else {
-  //           inputObj['password2'] = register.password2 ? '' : errors.password2;
-  //         }
-  //         break;
-
-  //       case 'password2':
-  //         if (!value) {
-  //           inputObj[name] = 'Please re-enter password';
-  //         } else if (register.password && value !== register.password) {
-  //           inputObj[name] = 'Passwords do not match.';
-  //         }
-  //         break;
-  //       default:
-  //         break;
-  //     }
-  //     return inputObj;
-  //   });
-  // };
+      switch (name) {
+        case 'title':
+          if (!value) {
+            inputObj[name] = 'Title is required';
+          }
+          break;
+        default:
+          break;
+      }
+      return inputObj;
+    });
+  };
 
   return (
     <div className='container flex flex-col-reverse items-center px-6 mx-auto mt-10 md:flex-row'>
@@ -140,7 +114,7 @@ const CreatePost = () => {
                   placeholder='Title'
                   value={show.title}
                   onChange={handleShow}
-                  // onBlur={handleValidate}
+                  onBlur={handleValidate}
                   className='w-full border-gray-300 rounded-lg shadow-sm focus:border-green focus:ring-green'
                 />
                 {errors.title && (
@@ -163,7 +137,6 @@ const CreatePost = () => {
                   placeholder="Theatre's Name"
                   value={show.theatre_name}
                   onChange={handleShow}
-                  // onBlur={handleValidate}
                   className='w-full border-gray-300 rounded-lg shadow-sm focus:border-green focus:ring-green'
                 />
                 {errors.theatre_name && (
@@ -186,7 +159,6 @@ const CreatePost = () => {
                   placeholder='Playwright'
                   value={show.playwright}
                   onChange={handleShow}
-                  // onBlur={handleValidate}
                   className='w-full border-gray-300 rounded-lg shadow-sm focus:border-green focus:ring-green'
                 />
                 {errors.playwright && (
@@ -209,7 +181,6 @@ const CreatePost = () => {
                   placeholder='City'
                   value={show.city}
                   onChange={handleShow}
-                  // onBlur={handleValidate}
                   className='w-full border-gray-300 rounded-lg shadow-sm focus:border-green focus:ring-green'
                 />
                 {errors.city && (
@@ -231,7 +202,6 @@ const CreatePost = () => {
                   placeholder="Show's Date"
                   value={show.show_date}
                   onChange={handleShow}
-                  // onBlur={handleValidate}
                   className='w-full border-gray-300 rounded-lg shadow-sm focus:border-green focus:ring-green'
                 />
                 {errors.show_date && (
@@ -250,14 +220,9 @@ const CreatePost = () => {
                 <input
                   type='file'
                   name='image'
-                  //value={upload}
                   onChange={handleUpload}
-                  // onBlur={handleValidate}
                   className='w-full border-gray-300 shadow-sm focus:border-green focus:ring-green'
                 />
-                {errors.city && (
-                  <span className='text-coral'>{errors.city}</span>
-                )}
               </div>
             </div>
             <button className='w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green hover:bg-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green'>

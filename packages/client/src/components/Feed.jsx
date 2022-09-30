@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-// import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Card from './Card';
 
@@ -24,18 +23,16 @@ const Feed = () => {
   }, []);
 
   const shows = showData.map((show) => (
-    <div>
-      <Card
-        key={show._id}
-        id={show._id}
-        image={show.image}
-        city={show.city}
-        title={show.title}
-        theatre={show.theatre_name}
-        playwright={show.playwright}
-        date={show.show_date}
-      />
-    </div>
+    <Card
+      key={show._id}
+      id={show._id}
+      image={show.image}
+      city={show.city}
+      title={show.title}
+      theatre={show.theatre_name}
+      playwright={show.playwright}
+      date={show.show_date}
+    />
   ));
 
   return (
