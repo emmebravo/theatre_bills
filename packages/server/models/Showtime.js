@@ -11,7 +11,7 @@ const ShowtimeSchema = new mongoose.Schema({
   },
   theatre_name: {
     type: String,
-    required: true,
+    required: false,
   },
   playwright: {
     type: String,

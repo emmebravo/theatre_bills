@@ -14,8 +14,8 @@ const feed = async (request, response) => {
 
 const getShow = async (request, response) => {
   try {
-    const data = await Showtime.findOne({ _id: request.params.id });
-    response.json({ data });
+    const show = await Showtime.findOne({ _id: request.params.id });
+    response.json({ show });
   } catch (error) {
     response.status(500).json({ message: error.message });
   }
