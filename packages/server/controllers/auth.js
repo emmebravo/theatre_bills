@@ -10,10 +10,20 @@ const login = (request, response, next) => {
     else {
       request.logIn(user, (error) => {
         if (error) throw error;
-        response.send('Successfully Authenticated');
+        response.status(200).send('success');
       });
     }
   })(request, response, next);
+};
+
+const logout = (request, response) => {
+  request.logout();
+  request.session.destroy((error) => {
+    if (error)
+      response
+        .status(500)
+        .send({ message: 'failed to destroy session', error });
+  });
 };
 
 const register = (request, response) => {
@@ -35,7 +45,7 @@ const register = (request, response) => {
     User.findOne({ email: email }).then((user) => {
       if (user) {
         //if user exists
-        errors.push({ msg: 'Email is already registered' });
+        errors.push({ message: 'email is already registered' });
         response.send({ errors });
       } else {
         const user = new User({
@@ -55,10 +65,9 @@ const register = (request, response) => {
             user
               .save()
               .then((user) => {
-                // request.flash('success_msg', 'You are now registered!');
-                response.redirect('/users/login');
+                response.status(200).send('success');
               })
-              .catch((error) => console.log(error));
+              .catch((error) => response.status(500).send(error));
           })
         );
       }
@@ -66,4 +75,4 @@ const register = (request, response) => {
   }
 };
 
-export { login, register };
+export { login, logout, register };
