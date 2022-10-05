@@ -10,7 +10,7 @@ const login = (request, response, next) => {
     else {
       request.logIn(user, (error) => {
         if (error) throw error;
-        response.status(200).send('success');
+        response.status(200).send(request.user.name);
       });
     }
   })(request, response, next);

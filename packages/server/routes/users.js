@@ -12,7 +12,7 @@ router.post('/register', auth.register);
 // @access Public
 router.post('/login', auth.login);
 
-// @route POST /users/login
+// @route POST /users/logout
 // @desc Logout user
 // @access Private
 router.post('/logout', auth.logout);
