@@ -84,7 +84,7 @@ const Login = () => {
                   type='email'
                   name='email'
                   placeholder='Email'
-                  value={login.email}
+                  value={loginObj.email}
                   onChange={handleLogin}
                   onBlur={handleValidate}
                   className='w-full border-gray-300 rounded-lg shadow-sm focus:border-green focus:ring-green'
@@ -106,7 +106,7 @@ const Login = () => {
                   type='password'
                   name='password'
                   placeholder='Password'
-                  value={login.password}
+                  value={loginObj.password}
                   onChange={handleLogin}
                   onBlur={handleValidate}
                   className='w-full border-gray-300 rounded-lg shadow-sm focus:border-green focus:ring-green'
