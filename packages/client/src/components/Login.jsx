@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { myContext } from '../Context/Context';
 
 const Login = () => {
-  const [login, setLogin] = useState({
+  const { login } = useContext(myContext);
+
+  const [loginObj, setLoginObj] = useState({
     email: '',
     password: '',
   });
@@ -15,8 +17,8 @@ const Login = () => {
 
   const handleLogin = (event) => {
     const { name, value } = event.target;
-    setLogin({
-      ...login,
+    setLoginObj({
+      ...loginObj,
       [name]: value,
     });
     handleValidate(event);
@@ -24,14 +26,7 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios
-      .post(`${import.meta.env.VITE_REACT_APP_BACKEND}/users/login`, login, {
-        withCredentials: true,
-      })
-      .then((response) => console.log(response.data))
-      .catch((error) => {
-        console.error(error);
-      });
+    login(loginObj);
   };
 
   const handleValidate = (event) => {
@@ -53,7 +48,6 @@ const Login = () => {
         default:
           break;
       }
-
       return inputObj;
     });
   };
