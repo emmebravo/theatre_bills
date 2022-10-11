@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-const CreatePost = () => {
+const CreateShow = () => {
   const [show, setShow] = useState({
     title: '',
     playwright: '',
@@ -13,7 +13,6 @@ const CreatePost = () => {
   const [previewImg, setPreviewImg] = useState(
     `https://via.placeholder.com/400x566.png?text=Playbill+Placeholder`
   );
-
   const [errors, setErrors] = useState({
     title: '',
   });
@@ -237,4 +236,4 @@ const CreatePost = () => {
   );
 };
 
-export default CreatePost;
+export default CreateShow;
