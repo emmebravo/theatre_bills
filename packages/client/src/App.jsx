@@ -4,7 +4,7 @@ import Hero from './components/Hero';
 import Login from './components/Login';
 import Register from './components/Register';
 import ProtectedRoute from './components/ProtectedRoute';
-import CreatePost from './components/CreatePost';
+import CreateShow from './components/CreateShow';
 import Feed from './components/Feed';
 // import Show from './components/Show';
 import NotFound from './components/NotFound';
@@ -22,7 +22,7 @@ function App() {
         {/* protected routes */}
         <Route element={<ProtectedRoute />}>
           <Route exact path='/feed' element={<Feed />} />
-          <Route exact path='/create-show' element={<CreatePost />} />
+          <Route exact path='/create-show' element={<CreateShow />} />
           {/* <Route exact path='/feed/:id' element={<Show />} /> */}
         </Route>
       </Route>
