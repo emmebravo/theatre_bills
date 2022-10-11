@@ -16,11 +16,13 @@ const login = (request, response, next) => {
   })(request, response, next);
 };
 
-const logout = (request, response) => {
-  request.logout();
-  request.session.destroy((error) => {
-    if (error) response.status(500).send({ error });
-  });
+const logout = async (request, response) => {
+  try {
+    await request.logout();
+    await request.session.destroy();
+  } catch (error) {
+    if (error) return response.send({ error });
+  }
 };
 
 const register = (request, response) => {

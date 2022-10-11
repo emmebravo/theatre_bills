@@ -1,9 +1,30 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import useAuth from '../hooks/useAuth';
+import axios from 'axios';
 import Masks from '../assets/masks.svg';
 
 const Navigation = () => {
+  const navigate = useNavigate();
+  const { user, setUser } = useAuth();
   const [hamMenu, setHamMenu] = useState(false);
+
+  const handleLogout = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_REACT_APP_BACKEND}/users/logout`,
+        {
+          withCredentials: true,
+        }
+      );
+      console.log(response);
+      setUser(false);
+      navigate('/');
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <nav className='relative container mx-auto p-6'>
@@ -14,9 +35,19 @@ const Navigation = () => {
           </Link>
         </div>
         <div className='hidden md:flex space-x-6'>
-          <Link to='/register'>Register</Link>
-          <Link to='/login'>Login</Link>
-          <Link to='/'>About</Link>
+          {user ? (
+            <>
+              <Link to='/feed'>Feed</Link>
+              <Link to='/create-show'>Create Show</Link>
+              <button onClick={handleLogout}>Logout</button>
+            </>
+          ) : (
+            <>
+              <Link to='/register'>Register</Link>
+              <Link to='/login'>Login</Link>
+              <Link to='/'>About</Link>
+            </>
+          )}
         </div>
 
         {/* hamburger icon & menu */}
@@ -38,9 +69,19 @@ const Navigation = () => {
             hamMenu ? 'flex' : 'hidden'
           }`}
         >
-          <Link to='/register'>Register</Link>
-          <Link to='/login'>Login</Link>
-          <Link to='/'>About</Link>
+          {user ? (
+            <>
+              <Link to='/feed'>Feed</Link>
+              <Link to='/create-show'>Create Show</Link>
+              <button onClick={handleLogout}>Logout</button>
+            </>
+          ) : (
+            <>
+              <Link to='/register'>Register</Link>
+              <Link to='/login'>Login</Link>
+              <Link to='/'>About</Link>
+            </>
+          )}
         </div>
       </div>
     </nav>
