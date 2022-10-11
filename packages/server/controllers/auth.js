@@ -6,11 +6,11 @@ import bcrypt from 'bcrypt';
 const login = (request, response, next) => {
   passport.authenticate('local', (error, user, info) => {
     if (error) throw error;
-    if (!user) response.send('No user exists');
+    if (!user) response.sendStatus(401);
     else {
       request.logIn(user, (error) => {
         if (error) throw error;
-        response.status(200).send(request.user.name);
+        response.sendStatus(200);
       });
     }
   })(request, response, next);
@@ -19,10 +19,7 @@ const login = (request, response, next) => {
 const logout = (request, response) => {
   request.logout();
   request.session.destroy((error) => {
-    if (error)
-      response
-        .status(500)
-        .send({ message: 'failed to destroy session', error });
+    if (error) response.status(500).send({ error });
   });
 };
 
