@@ -1,11 +1,13 @@
-import { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { myContext } from '../Context/Context';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import useAuth from '../hooks/useAuth';
+import axios from 'axios';
 
 const Login = () => {
-  const { login } = useContext(myContext);
+  const { setUser } = useAuth();
+  const navigate = useNavigate();
 
-  const [loginObj, setLoginObj] = useState({
+  const [login, setLogin] = useState({
     email: '',
     password: '',
   });
@@ -17,16 +19,31 @@ const Login = () => {
 
   const handleLogin = (event) => {
     const { name, value } = event.target;
-    setLoginObj({
-      ...loginObj,
+    setLogin({
+      ...login,
       [name]: value,
     });
     handleValidate(event);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    login(loginObj);
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_REACT_APP_BACKEND}/users/login`,
+        login,
+        {
+          withCredentials: true,
+        }
+      );
+      const status = response?.status;
+      setUser(status === 200);
+      navigate('/feed');
+    } catch (error) {
+      if (error.response?.status === 404) {
+        setErrors('Cannot login');
+      }
+    }
   };
 
   const handleValidate = (event) => {
@@ -84,9 +101,10 @@ const Login = () => {
                   type='email'
                   name='email'
                   placeholder='Email'
-                  value={loginObj.email}
+                  value={login.email}
                   onChange={handleLogin}
                   onBlur={handleValidate}
+                  required
                   className='w-full border-gray-300 rounded-lg shadow-sm focus:border-green focus:ring-green'
                 />
                 {errors.email && (
@@ -106,9 +124,10 @@ const Login = () => {
                   type='password'
                   name='password'
                   placeholder='Password'
-                  value={loginObj.password}
+                  value={login.password}
                   onChange={handleLogin}
                   onBlur={handleValidate}
+                  required
                   className='w-full border-gray-300 rounded-lg shadow-sm focus:border-green focus:ring-green'
                 />
                 {errors.password && (
