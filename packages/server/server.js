@@ -50,8 +50,13 @@ app.use('/users', users);
 app.use('/api', main);
 
 if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/build')));
   app.get('*', (request, response) => {
-    response.sendFile(path.join(__dirname + '../client/public/index.html'));
+    response.sendFile(path.join(__dirname, '../client', 'build', 'index.html'));
+  });
+} else {
+  app.get('/', (request, response) => {
+    response.send('API running');
   });
 }
 

@@ -11,11 +11,16 @@ node_modules
 dist
 dist-ssr
 *.local
-.yarn/*
-!.yarn/releases
-!.yarn/plugins
 .pnp.*
 .env
+
+# Yarn
+.yarn/*
+!.yarn/cache
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
 
 # Editor directories and files
 .vscode/*
