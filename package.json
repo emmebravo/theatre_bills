@@ -8,6 +8,6 @@
     "start": "yarn packages/server start",
     "client": "yarn packages/client start",
     "server": "yarn packages/server dev",
-    "build": "yarn install && yarn --cwd packages/client install && yarn --cwd packages/client build"
+    "build": "npm install && npm packages/client install && npm packages/client build"
   }
 }
