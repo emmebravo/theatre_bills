@@ -6,6 +6,7 @@ import session from 'express-session';
 import MongoStore from 'connect-mongo';
 import passport from 'passport';
 import passportConfig from './config/passport.js';
+import path from 'path';
 import main from './routes/api/main.js';
 import users from './routes/users.js';
 
@@ -45,11 +46,14 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //routes
-app.get('/', (request, response) => {
-  response.send('API working');
-});
 app.use('/users', users);
 app.use('/api', main);
+
+if (process.env.NODE_ENV === 'production') {
+  app.get('*', (request, response) => {
+    response.sendFile(path.join(__dirname + '../client/public/index.html'));
+  });
+}
 
 app.listen(PORT, () => {
   console.log(`localhost @ ${PORT}`);
