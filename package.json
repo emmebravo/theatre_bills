@@ -1,4 +1,5 @@
 {
+  "name": "theatre_bills",
   "private": true,
   "workspaces": [
     "packages/*"
@@ -7,7 +8,6 @@
     "start": "yarn --cwd packages/server start",
     "client": "yarn --cwd packages/client start",
     "server": "yarn --cwd packages/server dev",
-    "dev": "run-p client server",
     "build": "yarn --cwd packages/client build"
   }
 }
