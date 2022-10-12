@@ -61,6 +61,16 @@ const CreateShow = () => {
       .catch((error) => {
         console.error(error.response.data);
       });
+    setShow({
+      title: '',
+      playwright: '',
+      theatre_name: '',
+      show_date: '',
+      city: '',
+    });
+    setPreviewImg(
+      `https://via.placeholder.com/400x566.png?text=Playbill+Placeholder`
+    );
   };
 
   const handleValidate = (event) => {
