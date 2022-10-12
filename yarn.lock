@@ -3566,12 +3566,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"root-workspace-0b6124@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "root-workspace-0b6124@workspace:."
-  languageName: unknown
-  linkType: soft
-
 "run-parallel@npm:^1.1.9":
   version: 1.2.0
   resolution: "run-parallel@npm:1.2.0"
@@ -3940,6 +3934,12 @@ __metadata:
   checksum: a04c07bb9e2d8f46776517d4618f2406fb977a74d914ad98b264fc3db0fe8224da5bec11e5f8902c5b9bcb8ace22d95fbe3c7b36b8593b7dfc8391a25898f32f
   languageName: node
   linkType: hard
+
+"theatre_bills@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "theatre_bills@workspace:."
+  languageName: unknown
+  linkType: soft
 
 "to-fast-properties@npm:^2.0.0":
   version: 2.0.0
