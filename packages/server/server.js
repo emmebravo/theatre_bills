@@ -7,11 +7,14 @@ import MongoStore from 'connect-mongo';
 import passport from 'passport';
 import passportConfig from './config/passport.js';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import main from './routes/api/main.js';
 import users from './routes/users.js';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 //connect DB
 connectDB();
