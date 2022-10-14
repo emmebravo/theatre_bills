@@ -1,5 +1,8 @@
 {
   "name": "theatre_bills",
+  "engines": {
+    "node": "18.x"
+  },
   "private": true,
   "workspaces": [
     "packages/*"
