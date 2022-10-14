@@ -50,9 +50,11 @@ app.use('/users', users);
 app.use('/api', main);
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build')));
+  app.use(express.static('../client/build'));
   app.get('*', (request, response) => {
-    response.sendFile(path.join(__dirname, '../client', 'build', 'index.html'));
+    response.sendFile(
+      path.resolve(__dirname, '../client', 'build', 'index.html')
+    );
   });
 } else {
   app.get('/', (request, response) => {
