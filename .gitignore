@@ -16,11 +16,11 @@ dist-ssr
 
 # Yarn
 .yarn/*
-!.yarn/cache
-!.yarn/releases
+.yarn/cache
+.yarn/releases
 .yarn/plugins
-!.yarn/sdks
-!.yarn/versions
+.yarn/sdks
+.yarn/versions
 
 # Editor directories and files
 .vscode/*
