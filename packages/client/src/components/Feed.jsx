@@ -40,9 +40,15 @@ const Feed = () => {
       <h2 className='max-w-md text-4xl font-bold text-center md:text-5xl md:text-left pb-4'>
         Shows
       </h2>
-      <div className='grid grid-cols-1 gap-4 grid-flow-row md:grid-cols-3'>
-        {showData && shows}
-      </div>
+      {showData.length ? (
+        <div className='grid grid-cols-1 gap-4 grid-flow-row md:grid-cols-3'>
+          {shows}
+        </div>
+      ) : (
+        <h3 className='text-2xl font-bold'>
+          You haven't digitized any playbills yet...
+        </h3>
+      )}
     </>
   );
 };
