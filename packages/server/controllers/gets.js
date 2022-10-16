@@ -3,12 +3,16 @@ import Showtime from '../models/Showtime.js';
 
 const feed = async (request, response) => {
   try {
-    const allShows = await Showtime.find().sort({ date: 'desc' });
+    const user = request.user._id;
+    const allShows = await Showtime.find({ userId: user }).sort({
+      createdAt: 'desc',
+    });
+    console.log(allShows);
     response.json({
       allShows,
     });
   } catch (error) {
-    response.status(500).json({ message: error.message });
+    response.send(error);
   }
 };
 
