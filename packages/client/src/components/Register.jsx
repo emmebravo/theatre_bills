@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Register = () => {
+  const navigate = useNavigate();
+
   const [register, setRegister] = useState({
     name: '',
     email: '',
@@ -26,17 +28,19 @@ const Register = () => {
     handleValidate(event);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    axios
-      .post(
+    try {
+      await axios.post(
         `${import.meta.env.VITE_REACT_APP_BACKEND}/users/register`,
         register
-      )
-      .then((response) => console.log(response))
-      .catch((error) => {
-        console.error(error);
-      });
+      );
+      navigate('/login');
+    } catch (error) {
+      if (error.status) {
+        setErrors('Cannot login');
+      }
+    }
   };
 
   const handleValidate = (event) => {
