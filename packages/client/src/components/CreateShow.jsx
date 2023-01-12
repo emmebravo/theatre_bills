@@ -9,6 +9,7 @@ const CreateShow = () => {
     show_date: '',
     city: '',
   });
+
   const [upload, setUpload] = useState();
   const [previewImg, setPreviewImg] = useState(
     `https://via.placeholder.com/400x566.png?text=Playbill+Placeholder`
