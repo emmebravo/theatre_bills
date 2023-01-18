@@ -11,6 +11,6 @@
     "start": "yarn packages/server start",
     "client": "yarn packages/client start",
     "server": "yarn packages/server dev",
-    "postbuild": "YARN2_SKIP_PRUNING=true yarn install && yarn ./packages/client install && yarn ./packages/client build"
+    "build": "YARN2_SKIP_PRUNING=true yarn install && yarn ./packages/client install && yarn ./packages/client build"
   }
 }
