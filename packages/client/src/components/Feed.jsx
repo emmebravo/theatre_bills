@@ -9,7 +9,7 @@ const Feed = () => {
     const fetchShow = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_REACT_APP_BACKEND}/api/gets/feed`,
+          `/api/gets/feed`,
           { withCredentials: true }
         );
         const data = await response.data.allShows;
