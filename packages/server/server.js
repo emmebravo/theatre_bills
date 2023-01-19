@@ -25,7 +25,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(
   cors({
-    origin: ['https://theatrebills.onrender.com', 'http://localhost:5173'], // allows server to accept requests from this origin
+    origin: 'https://theatrebills.onrender.com', // allows server to accept requests from this origin
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true, // allow cookie session from browser to pass through to server
   })
@@ -37,7 +37,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: process.env.NODE_DEV === 'PRODUCTION',
+      secure: true,
     },
     store: MongoStore.create({
       mongoUrl: process.env.MONGO_URI,
