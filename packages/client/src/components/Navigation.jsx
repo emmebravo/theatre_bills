@@ -13,7 +13,7 @@ const Navigation = () => {
     event.preventDefault();
     try {
       await axios.post(
-        `${import.meta.env.VITE_REACT_APP_BACKEND}/users/logout`,
+        `/users/logout`,
         {
           withCredentials: true,
         }
