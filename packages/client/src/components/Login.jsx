@@ -30,7 +30,7 @@ const Login = () => {
     event.preventDefault();
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_REACT_APP_BACKEND}/users/login`,
+        `/users/login`,
         login,
         {
           withCredentials: true,
