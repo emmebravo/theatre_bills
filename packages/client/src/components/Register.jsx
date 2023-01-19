@@ -32,7 +32,7 @@ const Register = () => {
     event.preventDefault();
     try {
       await axios.post(
-        `${import.meta.env.VITE_REACT_APP_BACKEND}/users/register`,
+        `/users/register`,
         register
       );
       navigate('/login');
