@@ -7,7 +7,6 @@ const feed = async (request, response) => {
     const allShows = await Showtime.find({ userId: user }).sort({
       createdAt: 'desc',
     });
-    console.log(allShows);
     response.json({
       allShows,
     });

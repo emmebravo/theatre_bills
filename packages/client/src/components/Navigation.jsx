@@ -12,13 +12,12 @@ const Navigation = () => {
   const handleLogout = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(
+      await axios.post(
         `${import.meta.env.VITE_REACT_APP_BACKEND}/users/logout`,
         {
           withCredentials: true,
         }
       );
-      console.log(response);
       setUser(false);
       navigate('/');
     } catch (error) {
