@@ -6,6 +6,7 @@ import session from 'express-session';
 import MongoStore from 'connect-mongo';
 import passport from 'passport';
 import passportConfig from './config/passport.js';
+import cron from 'node-cron';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import main from './routes/api/main.js';
@@ -46,6 +47,12 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+
+const task = cron.schedule('*/13 * * * *', () => {
+  console.log('running a job every 13mins');
+});
+
+task.start();
 
 //routes
 app.use('/users', users);
