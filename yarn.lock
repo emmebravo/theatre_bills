@@ -1383,6 +1383,7 @@ __metadata:
     cloudinary: ^1.31.0
     connect-mongo: ^4.6.0
     cors: ^2.8.5
+    croner: ^6.0.3
     dotenv: ^16.0.3
     express: ^4.18.1
     express-session: ^1.17.3
@@ -2118,6 +2119,13 @@ __metadata:
     object-assign: ^4
     vary: ^1
   checksum: ced838404ccd184f61ab4fdc5847035b681c90db7ac17e428f3d81d69e2989d2b680cc254da0e2554f5ed4f8a341820a1ce3d1c16b499f6e2f47a1b9b07b5006
+  languageName: node
+  linkType: hard
+
+"croner@npm:^6.0.3":
+  version: 6.0.3
+  resolution: "croner@npm:6.0.3"
+  checksum: 3e501c361c495327e68aa705cbf33c108374c926c4b060aec0a4ff75dd142a59fe785dfef968de6e86699bd2338b2cab1f684fd2db779adb425648c7f2d87338
   languageName: node
   linkType: hard
 
