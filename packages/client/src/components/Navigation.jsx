@@ -12,12 +12,9 @@ const Navigation = () => {
   const handleLogout = async (event) => {
     event.preventDefault();
     try {
-      await axios.post(
-        `/users/logout`,
-        {
-          withCredentials: true,
-        }
-      );
+      await axios.post(`/api/auth/logout`, {
+        withCredentials: true,
+      });
       setUser(false);
       navigate('/');
     } catch (error) {

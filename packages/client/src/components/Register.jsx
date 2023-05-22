@@ -31,10 +31,7 @@ const Register = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post(
-        `/users/register`,
-        register
-      );
+      await axios.post(`/api/auth/register`, register);
       navigate('/login');
     } catch (error) {
       if (error.status) {

@@ -29,13 +29,9 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(
-        `/users/login`,
-        login,
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await axios.post(`/api/auth/login`, login, {
+        withCredentials: true,
+      });
       const status = response?.status;
       setUser(status === 200);
       navigate('/feed');

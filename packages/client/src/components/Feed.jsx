@@ -8,10 +8,9 @@ const Feed = () => {
   useEffect(() => {
     const fetchShow = async () => {
       try {
-        const response = await axios.get(
-          `/api/gets/feed`,
-          { withCredentials: true }
-        );
+        const response = await axios.get(`/api/gets/feed`, {
+          withCredentials: true,
+        });
         const data = await response.data.allShows;
         setShowData(data);
       } catch (error) {
