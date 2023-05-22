@@ -21,18 +21,34 @@ const Feed = () => {
     fetchShow();
   }, []);
 
-  const shows = showData.map((show) => (
-    <Card
-      key={show._id}
-      id={show._id}
-      image={show.image}
-      city={show.city}
-      title={show.title}
-      theatre={show.theatre_name}
-      playwright={show.playwright}
-      date={show.show_date}
-    />
-  ));
+  // const shows = showData.map((show) => (
+  //   <Card
+  //     key={show._id}
+  //     id={show._id}
+  //     image={show.image}
+  //     city={show.city}
+  //     title={show.title}
+  //     theatre={show.theatre_name}
+  //     playwright={show.playwright}
+  //     date={show.show_date}
+  //   />
+  // ));
+
+  let shows;
+  if (showData.length) {
+    shows = showData.map((show) => (
+      <Card
+        key={show._id}
+        id={show._id}
+        image={show.image}
+        city={show.city}
+        title={show.title}
+        theatre={show.theatre_name}
+        playwright={show.playwright}
+        date={show.show_date}
+      />
+    ));
+  }
 
   return (
     <>
