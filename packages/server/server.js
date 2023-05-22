@@ -6,11 +6,10 @@ import session from 'express-session';
 import MongoStore from 'connect-mongo';
 import passport from 'passport';
 import passportConfig from './config/passport.js';
-import { Cron } from 'croner';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import main from './routes/api/main.js';
-import users from './routes/users.js';
+// import users from './routes/users.js';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -26,7 +25,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(
   cors({
-    origin: 'https://theatrebills.onrender.com', // allows server to accept requests from this origin
+    origin: ['https://theatrebills.onrender.com', 'http://localhost:5173'], // allows server to accept requests from this origin
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true, // allow cookie session from browser to pass through to server
   })
@@ -48,14 +47,8 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-const date = new Date();
-
-Cron('* */10 * * * *', () => {
-  console.log('This should run every 10mins', date.toString());
-});
-
 //routes
-app.use('/users', users);
+// app.use('/users', users);
 app.use('/api', main);
 
 if (process.env.NODE_ENV === 'production') {
