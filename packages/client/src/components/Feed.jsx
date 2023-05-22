@@ -39,7 +39,7 @@ const Feed = () => {
       <h2 className='max-w-md text-4xl font-bold text-center md:text-5xl md:text-left pb-4'>
         Shows
       </h2>
-      {showData.length ? (
+      {showData?.length ? (
         <div className='grid grid-cols-1 gap-4 grid-flow-row md:grid-cols-3'>
           {shows}
         </div>
