@@ -9,7 +9,6 @@ import passportConfig from './config/passport.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import main from './routes/api/main.js';
-// import users from './routes/users.js';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -48,7 +47,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //routes
-// app.use('/users', users);
 app.use('/api', main);
 
 if (process.env.NODE_ENV === 'production') {
